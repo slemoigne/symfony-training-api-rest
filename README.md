@@ -1,3 +1,13 @@
+# Specific build
+
+Launch command
+```
+SYMFONY_VERSION=6.2.x SERVER_NAME="training-api-rest.local" XDEBUG_MODE=debug docker compose build --no-cache
+SYMFONY_VERSION=6.2.x SERVER_NAME="training-api-rest.local" XDEBUG_MODE=debug docker compose up --pull --wait
+```
+
+Add `training-api-rest.local` to `/etc/hosts`
+
 # Symfony Docker
 
 A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework, with full [HTTP/2](https://symfony.com/doc/current/weblink.html), HTTP/3 and HTTPS support.
