@@ -12,13 +12,13 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class BookController extends AbstractController
 {
-    #[Route('/api/books', name: 'books', methods: ['GET'])]
+    #[Route('/api/books', name: 'bookGetCollection', methods: ['GET'])]
     public function getBookList(BookRepository $bookRepository, SerializerInterface $serializer): JsonResponse
     {
         $books = $bookRepository->findAll();
 
         return new JsonResponse(
-            $serializer->serialize($books, 'json'),
+            $serializer->serialize($books, 'json', ['groups' => 'get']),
             Response::HTTP_OK,
             [],
             true
@@ -41,11 +41,11 @@ class BookController extends AbstractController
         return new JsonResponse(null, Response::HTTP_NOT_FOUND);
     }*/
 
-    #[Route('/api/books/{id}', name: 'books', methods: ['GET'])]
+    #[Route('/api/books/{id}', name: 'bookGet', methods: ['GET'])]
     public function get(Book $book, SerializerInterface $serializer): JsonResponse
     {
         return new JsonResponse(
-            $serializer->serialize($book, 'json'),
+            $serializer->serialize($book, 'json', ['groups' => 'get']),
             Response::HTTP_OK,
             [],
             true
